@@ -110,14 +110,17 @@ Meeting.belongsTo(User, {
     foreignKey: 'user_id',
     sourceKey: 'id'
 });
-//Meeting note
-MeetingNote.belongsTo(Participant, {
-    foreignKey: 'user_id',
-    sourceKey: 'user_id'
-});
+
+//MeetingNote second way to define reference
+
 // MeetingNote.belongsTo(Participant, {
-//     foreignKey: 'meeting_id', 
+//     foreignKey: 'meeting_id',
 //     sourceKey: 'meeting_id'
+// });
+
+// MeetingNote.belongsTo(Participant, {
+//     foreignKey: 'user_id',
+//     sourceKey: 'user_id'
 // });
 
 Skill.belongsToMany(Employee, { through: 'skill_emp', foreignKey: 'skill_id' });
@@ -125,19 +128,6 @@ Employee.belongsToMany(Skill, { through: 'skill_emp', foreignKey: 'emp_id' });
 
 Meeting.belongsToMany(Employee, { through: 'participant', foreignKey: 'meeting_id' });
 Employee.belongsToMany(Meeting, { through: 'participant', foreignKey: 'user_id' });
-
-
-
-// LeaveType.hasMany(TimeOff, {
-//     foreignKey: 'leave_type_cd',
-//     sourceKey: 'cd'
-// });
-
-// LeaveStatus.hasMany(TimeOff, {
-//     foreignKey: 'leave_status_cd',
-//     sourceKey: 'cd'
-// });
-
 
 const path = require('path');
 
@@ -159,7 +149,7 @@ sequelize
     .sync({ force: true })//every time drop tables and create them a new
     .then(result => {
         console.log(result);
-        app.listen(3000);
+        app.listen(3001);
     })
     .catch(err => {
         console.log(err);
