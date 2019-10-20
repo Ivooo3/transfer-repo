@@ -2,32 +2,35 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const UserHistory = sequelize.define('user_history', {
+const Meeting = sequelize.define('meeting', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    password: {
+    room_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true
+    },
+    user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    subject: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    e_mail: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    user_role: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    password_change_code: Sequelize.STRING,
-    c_when: {
+    date: {
         type: Sequelize.DATE,
         allowNull: false,
-        primaryKey: true
+        unique: true
     },
-    c_who: Sequelize.INTEGER
+    duration: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
 });
 
-module.exports = UserHistory;
+module.exports = Meeting;

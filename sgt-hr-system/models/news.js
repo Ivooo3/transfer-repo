@@ -9,11 +9,23 @@ const News = sequelize.define('news', {
         allowNull: false,
         primaryKey: true
     },
-    user_id: Sequelize.INTEGER, //foreign key
-    doc_id: Sequelize.INTEGER, //foreign key
-    title: Sequelize.STRING,
-    date: Sequelize.DATE,
-    comments: Sequelize.STRING
+    user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    doc_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    title: {
+        type: Sequelize.STRING(100),
+        allowNull: false
+    },
+    date: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
+    news_comments: Sequelize.STRING(500)
 });
 
 module.exports = News;

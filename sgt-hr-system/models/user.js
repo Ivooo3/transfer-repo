@@ -8,15 +8,33 @@ const User = sequelize.define('user', {
         allowNull: false,
         primaryKey: true
     },
-    userName: Sequelize.STRING,
-    salt: Sequelize.STRING,
-    password: Sequelize.STRING,
-    mail: Sequelize.STRING,
-    role: Sequelize.STRING,
+    userName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
+    },
+    salt: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    e_mail: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    user_role: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     password_change_code: Sequelize.STRING,
-    when: Sequelize.DATE,
-    //who need to be foreign key
-    who: Sequelize.INTEGER,
+    c_when: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
+    c_who: Sequelize.INTEGER
 });
 
 module.exports = User;

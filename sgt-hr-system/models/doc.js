@@ -9,9 +9,18 @@ const Document = sequelize.define('doc', {
         allowNull: false,
         primaryKey: true
     },
-    name: Sequelize.STRING,
-    type: Sequelize.STRING,
-    url: Sequelize.STRING,
+    doc_name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    doc_type: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    doc_url: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     date: Sequelize.DATE
 });
 

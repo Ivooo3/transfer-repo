@@ -9,7 +9,7 @@ const Skill = sequelize.define('skill', {
         allowNull: false,
         primaryKey: true
     },
-    name: Sequelize.STRING
+    skill_name: Sequelize.STRING(50)
 });
 
 module.exports = Skill;

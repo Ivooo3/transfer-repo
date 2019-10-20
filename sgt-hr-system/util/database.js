@@ -1,8 +1,11 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('test-db', 'root', 'root', {
+const sequelize = new Sequelize('sgt_hr', 'root', 'admin', {
   dialect: 'mysql',
-  host: 'localhost'
+  host: 'localhost',
+  define: {
+    timestamps: false
+  }
 });
 
 module.exports = sequelize;

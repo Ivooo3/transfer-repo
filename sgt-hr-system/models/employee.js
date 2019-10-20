@@ -5,24 +5,21 @@ const sequelize = require('../util/database');
 const Employee = sequelize.define('employee', {
   id: {
     type: Sequelize.INTEGER,
-    autoIncrement: true,
     allowNull: false,
     primaryKey: true
   },
-  first_name: Sequelize.STRING,
-  last_name: Sequelize.STRING,
-  start_date: {
-    type: Sequelize.DATE,
+  first_name: {
+    type: Sequelize.STRING,
     allowNull: false
   },
-  end_date: {
-    type: Sequelize.DATE,
-    allowNull: true
+  last_name: {
+    type: Sequelize.STRING,
+    allowNull: false
   },
+  start_date: Sequelize.DATE,
+  end_date: Sequelize.DATE,
   position: Sequelize.STRING,
-
-  url_portfolio: Sequelize.STRING,
-  //todo doc foreign key
+  url_portfolio: Sequelize.STRING
 });
 
 module.exports = Employee;

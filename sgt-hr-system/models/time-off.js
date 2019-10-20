@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
-
 const sequelize = require('../util/database');
+const LeaveStatus = require('./leave-status');
 
 const TimeOff = sequelize.define('time_off', {
     id: {
@@ -9,16 +9,40 @@ const TimeOff = sequelize.define('time_off', {
         allowNull: false,
         primaryKey: true
     },
-    user_id: Sequelize.INTEGER, //Foreign key
-    leave_type_cd: Sequelize.STRING, //Foreign key
-    leave_status_cd: Sequelize.STRING, //Foreign key
-    doc_id: Sequelize.INTEGER, //Foreign key
-    date_from: Sequelize.DATE,
-    date_to: Sequelize.DATE,
-    half_day: Sequelize.CHAR,
+    user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    leave_type_cd: {
+        type: Sequelize.STRING(10),
+        allowNull: false,
+    },
+    leave_status_cd: {
+        type: Sequelize.STRING(10),
+        allowNull: false
+    },
+    doc_id: Sequelize.INTEGER,
+    date_from: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
+    date_to: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
+    half_day: {
+        type: Sequelize.CHAR,
+        allowNull: false
+    },
     note: Sequelize.STRING,
-    //who
-    //when
+    c_when: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
+    c_who: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
 });
 
 module.exports = TimeOff;

@@ -2,17 +2,20 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const Room = sequelize.define('room', {
+const TraceLog = sequelize.define('trace_log', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    room_name: {
-        type: Sequelize.STRING(50),
+    user_id: {
+        type: Sequelize.INTEGER,
         allowNull: false
-    }
+    },
+    date_log_in: Sequelize.DATE,
+    date_log_out: Sequelize.DATE,
+    ip: Sequelize.STRING
 });
 
-module.exports = Room;
+module.exports = TraceLog;

@@ -3,8 +3,8 @@ const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
 const LeaveType = sequelize.define('leave_type', {
-    cd: {
-        type: Sequelize.STRING,
+    id: {
+        type: Sequelize.STRING(10),
         allowNull: false,
         primaryKey: true
     }
