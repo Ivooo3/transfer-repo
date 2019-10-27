@@ -111,18 +111,6 @@ Meeting.belongsTo(User, {
     sourceKey: 'id'
 });
 
-//MeetingNote second way to define reference
-
-// MeetingNote.belongsTo(Participant, {
-//     foreignKey: 'meeting_id',
-//     sourceKey: 'meeting_id'
-// });
-
-// MeetingNote.belongsTo(Participant, {
-//     foreignKey: 'user_id',
-//     sourceKey: 'user_id'
-// });
-
 Skill.belongsToMany(Employee, { through: 'skill_emp', foreignKey: 'skill_id' });
 Employee.belongsToMany(Skill, { through: 'skill_emp', foreignKey: 'emp_id' });
 
@@ -139,16 +127,21 @@ const sequelize = require('./util/database');
 const app = express();
 
 const adminRoutes = require('./routes/admin');
+const userRoutes = require('./routes/user');
+const skillRoutes = require('./routes/skill');
+const traceLogRoutes = require('./routes/traceLog');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRoutes);
+app.use(userRoutes);
+app.use(skillRoutes);
+app.use(traceLogRoutes);
 
 sequelize
-    .sync({ force: true })//every time drop tables and create them a new
+    .sync()
     .then(result => {
-        console.log(result);
         app.listen(3001);
     })
     .catch(err => {
